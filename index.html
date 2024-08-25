@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Scent Technology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden;
+            background-color: #f0f0f0;
+            color: white;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        header {
+            width: 100%;
+            padding: 10px;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        header .logo img {
+            height: 120px;
+            opacity: 1.0;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            width: 80%;
+            margin: 50px auto 0 auto; /* Center horizontally and add top margin */
+            text-align: center;
+        }
+        .content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+        }
+        .spacer {
+            height: 500px; /* Spacer to make scrolling happen */
+        }
+        .about {
+            position: relative;
+            z-index: 1;
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+            backdrop-filter: blur(10px); /* Apply the frosted glass effect */
+            padding: 20px;
+            border-radius: 10px;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease-in-out; /* Smooth fade-in */
+        }
+        .about.visible {
+            opacity: 1; /* Make visible when scrolled down */
+        }
+        .about img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        .about h2 {
+            font-size: 24px;
+            color: white;
+        }
+        .about button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: green; /* Set button background color to green */
+            color: white; /* Set button text color to white */
+        }
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 300px;
+            height: 450px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        .chat-header {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-header img {
+            height: 81px; /* 50% bigger than previous 54px */
+            margin-bottom: 0; /* Remove bottom margin to bring text closer */
+        }
+        .chat-header .bot-text {
+            color: white;
+            font-size: 12px; /* 50% smaller than previous 18px */
+            margin-top: -5px; /* Bring text closer to the logo */
+        }
+        .chat-box {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .chat-input {
+            width: 100%;
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+        .chat-input input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            font-size: 16px;
+            background-color: transparent;
+            color: white;
+        }
+        .chat-input input::placeholder {
+            color: white;
+        }
+        .chat-input button {
+            padding: 10px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header>
+        <div class="logo">
+            <img src="logoc-removebg.png" alt="DST Logo">
+        </div>
+        <nav>
+            <a href="#">Products</a>
+            <a href="#">Solutions</a>
+            <a href="#">Training & Services</a>
+            <a href="#">Resources</a>
+            <a href="#">Partners</a>
+            <a href="#about-section" onclick="scrollToAbout()">About</a>
+        </nav>
+    </header>
+    <div class="content">
+        <h1>Digital Scent Technology</h1>
+    </div>
+    <div class="spacer"></div> <!-- Spacer for scrolling -->
+    <div id="about-section" class="about">
+        <img src="profile.jpeg" alt="Profile Photo">
+        <h2>Harish Vijayasarangan</h2>
+        <button onclick="window.location.href='https://www.linkedin.com/in/harishvijayasarangan'">LinkedIn</button>
+        <button onclick="window.location.href='mailto:harishvijayasarangank@gmail.com'">Email</button>
+    </div>
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="logoc-removebg.png" alt="DST Logo">
+            <div class="bot-text">Bot</div>
+        </div>
+        <div id="chatbox" class="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="How can I help you today?" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        function scrollToAbout() {
+            document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', function() {
+            const aboutSection = document.getElementById('about-section');
+            const scrollPosition = window.scrollY;
+            const triggerPoint = document.querySelector('.spacer').offsetTop;
+
+            if (scrollPosition >= triggerPoint) {
+                aboutSection.classList.add('visible');
+            } else {
+                aboutSection.classList.remove('visible');
+            }
+        });
+
+        function sendMessage() {
+            // Implement the functionality for sending a message
+        }
+    </script>
+</body>
+</html>
